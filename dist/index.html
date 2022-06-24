@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="main.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">ToDos</div>
+    <div class="main">
+        <div class="navbar">
+            <div class="defaults">
+                <ul>
+                    <li class = 'inbox'>Inbox</li>
+                    <li class = 'today'>Today</li>
+                    <li class = 'nextweek'>Next Week</li>
+                </ul>
+            </div>
+            <div class="projects">
+                <ul>
+                    <li class="addProject">Add Project</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer">Rodrigo Eusébio</div>
+    <div class="todoPopup">
+        <div class="formPopup" id="popupForm">
+          <form class="formContainer" id="form" action="#">
+            <h2>TO DO</h2>
+            <label for="title">
+              <strong>Title</strong>
+            </label>
+            <input type="text" id="title" placeholder="Title" name="title" minlength="1" required>
+            <div class="buttonsForm">
+              <button type="submit" class="btn" id ="save">Save</button>
+              <button type="button" class="btn cancel" id="close">Close</button>
+            </div>
+          </form>
+        </div>
+      </div>
+</body>
+</html>

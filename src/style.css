@@ -1,0 +1,255 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    height: 100vh;
+}
+
+.header{
+    display: flex;
+    height: 10vh;
+    text-align: left;
+    background-color: rgb(66, 66, 66);
+    color: white;
+    font-size: 6vh;
+    align-items: center;
+    padding-left: 2vh;
+}
+
+.header:before{
+    content: "";
+    display: block;
+    background: url('./imgs/todo-icon.png') no-repeat;
+    width: 64px;
+    height: 64px;
+    float: left;
+    margin: 0 6px 0 0;
+    color: white;
+}
+
+.main{
+    height: 87vh;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+.navbar{
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+}
+
+.defaults{
+    background-color: rgb(165, 165, 165);
+}
+
+.defaults>ul{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding-left: 3vw;
+    font-size: 3vh;
+    padding: 1vw;
+    gap: 1vw;
+}
+
+.defaults>ul>li{
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.inbox:before{
+    content: "";
+    display: block;
+    background: url('./imgs/inbox.png') no-repeat;
+    background-size: cover;
+    width: 3vh;
+    height: 3vh;
+    float: left;
+    margin: 0 6px 0 0;
+    color: white;
+}
+
+.today:before{
+    content: "";
+    display: block;
+    background: url('./imgs/today.png') no-repeat;
+    background-size: cover;
+    width: 3vh;
+    height: 3vh;
+    float: left;
+    margin: 0 6px 0 0;
+    color: white;
+}
+
+.nextweek:before{
+    content: "";
+    display: block;
+    background: url('./imgs/nextWeek.png') no-repeat;
+    background-size: cover;
+    width: 3vh;
+    height: 3vh;
+    float: left;
+    margin: 0 6px 0 0;
+    color: white;
+}
+
+.projects{
+    background-color: rgb(199, 199, 199);
+}
+
+.projects>ul{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding-left: 3vw;
+    font-size: 3vh;
+    padding: 1vw;
+    gap: 1vw;
+}
+
+.projects>ul>li{
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.addProject:before{
+    content: "";
+    display: block;
+    background: url('./imgs/add.png') no-repeat;
+    background-size: cover;
+    width: 3vh;
+    height: 3vh;
+    float: left;
+    margin: 0 6px 0 0;
+    color: white;
+}
+
+
+#content{
+    background-color: rgb(0, 0, 0);
+    display: grid;
+    grid-template-rows: repeat(auto-fit, calc(min(10vh,5vh)));
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    justify-content: center;
+    
+}
+
+.card{
+    background-color: aliceblue;
+    border-radius: 20px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.join{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 10rem;
+    
+}
+.check{
+    width: 3vh;
+    height: 3vh;
+}
+
+.content-title{
+    display: flex;
+    text-align: left;
+    background-color: rgb(116, 116, 116);
+    color: white;
+    font-size: 4vh;
+    align-items: center;
+    padding-left: 2vh;
+}
+
+.footer{
+    height:3vh;
+    display: flex;
+    text-align: left;
+    background-color: rgb(46, 46, 46);
+    color: white;
+    font-size: 2vh;
+    align-items: center;
+    justify-content: center;
+    padding-left: 2vh;
+}
+
+
+/* Pop Up Form */
+
+.todoPopup {
+    position: relative;
+    text-align: center;
+    font-size: 2vh;
+}
+.formPopup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, 5%);
+}
+.formContainer {
+
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1vh;
+    width: calc(max(300px,25vw));
+    height: 20vh;
+    max-width: 500px;
+    max-height: 500px;
+    padding: 20px;
+    background-color: #fff;
+}
+.formContainer input[type=title],
+.formContainer input[type=author] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 20px 0;
+    border: none;
+    background: #eee;
+}
+.formContainer input[type=title]:focus,
+.formContainer input[type=author]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+.formContainer > #accepted{
+    width: 20px;
+}
+
+.buttonsForm{
+    display: flex;
+    justify-content: space-around;
+    min-width: auto;
+}
+
+.formContainer .btn {
+    padding: 12px 20px;
+    border: none;
+    background-color: #8ebf42;
+    color: #fff;
+    cursor: pointer;
+    width: 5vw;
+    min-width: fit-content;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+.formContainer .cancel {
+    background-color: #cc0000;
+}
+.formContainer .btn:hover,
+.openButton:hover {
+    opacity: 1;
+}
