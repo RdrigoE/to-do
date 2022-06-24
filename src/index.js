@@ -32,23 +32,6 @@ const Card = (title) =>{
 }
 
 const ManageCards = (() =>{
-    const openForm = (inbox) => {
-        //Make the register visible
-        document.getElementById("popupForm").style.display = "block";
-        //Add Event listener for the buttons
-        //Close event
-        document.getElementById("close").addEventListener("click", ()=>{
-            closeForm()
-        },{once: true})
-        //Save Event
-        document.getElementById("save").addEventListener("click", () =>{
-            if (document.querySelector("input").textContent != undefined){
-                addCard(inbox) 
-                document.querySelector("#title").textContent = undefined     
-                closeForm()
-        }
-        })
-    }
     const closeForm = () => {
         document.getElementById("popupForm").style.display = "none";
     }
@@ -59,6 +42,24 @@ const ManageCards = (() =>{
         let new_card = Card(info)
         inbox.addToDo(new_card)
         updateCard(inbox)
+    }
+
+    const openForm = (inbox) => {
+        //Make the register visible
+        document.getElementById("popupForm").style.display = "block";
+        //Add Event listener for the buttons
+        //Close event
+        document.getElementById("close").addEventListener("click", ()=>{
+            closeForm()
+        },{once: true})
+        //Save Event
+        document.getElementById("save").addEventListener("click", () =>{
+            if (document.querySelector("input").textContent == undefined){
+                addCard(inbox) 
+                document.querySelector("#title").textContent = "Rodrigo"     
+                closeForm()
+        }
+        })
     }
 
     return{
@@ -76,4 +77,7 @@ loadHeader()
 
 document.getElementById("addCard").addEventListener("click", () =>{
     ManageCards.openForm(inbox)
-})
+}, {once: true})
+
+
+
