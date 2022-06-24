@@ -2,82 +2,61 @@ import './style.css';
 import {loadHeader, updateCard} from "./inboxPage";
 
 const Inbox = () =>{
-    let todoArray = []
-
-    const getToDo = () => todoArray;
+    let list = []
 
     const addToDo = (value) =>{
-        todoArray.push(value)
+        if (value != undefined | value != ""){
+            list.push(value)
+        }
     }
 
     const removeTodo = (value) =>{
-        var index = todoArray.indexOf(value);
+        var index = list.indexOf(value);
         if (index > -1) {
-            todoArray.splice(index, 1);
+            list.splice(index, 1);
         }
     }
 
     return{
-        todoArray,
-        getToDo,
+        list,
         addToDo,
         removeTodo,
     }
 }
 
 const Card = (title) =>{
+    var title = title
     return{
         title
     }
 }
 
-const ManageCards = (() =>{
-    const closeForm = () => {
+let openForm = () => {
+    //Make the register visible
+    document.getElementById("popupForm").style.display = "block";
+    //Add Event listener for the buttons
+    //Close event
+    document.getElementById("close").addEventListener("click", ()=>{
         document.getElementById("popupForm").style.display = "none";
-    }
-
-    const addCard = (inbox) =>{
-        let info = document.querySelector('input').textContent
-        console.log(info)
-        let new_card = Card(info)
-        inbox.addToDo(new_card)
-        updateCard(inbox)
-    }
-
-    const openForm = (inbox) => {
-        //Make the register visible
-        document.getElementById("popupForm").style.display = "block";
-        //Add Event listener for the buttons
-        //Close event
-        document.getElementById("close").addEventListener("click", ()=>{
-            closeForm()
-        },{once: true})
-        //Save Event
-        document.getElementById("save").addEventListener("click", () =>{
-            if (document.querySelector("input").textContent == undefined){
-                addCard(inbox) 
-                document.querySelector("#title").textContent = "Rodrigo"     
-                closeForm()
+    },{once: true})
+    //Save Event
+    document.getElementById("save").addEventListener("click", () =>{
+        if (document.getElementById("title").value != undefined){
+            var input = document.getElementById("title").value
+            let c = Card(input)
+            inbox.addToDo(c)
+            updateCard(inbox.list)
+            document.getElementById("title").value = ""   
+            document.getElementById("popupForm").style.display = "none";
         }
-        })
-    }
+    },{once: true})
+}
 
-    return{
-        openForm,
-        closeForm
-    }
-})();
+let inbox = Inbox()
 
-
-var inbox = Inbox()
-inbox.addCard(Card("First Card"))
-
-loadHeader()
-
+loadHeader(inbox.list)
 
 document.getElementById("addCard").addEventListener("click", () =>{
-    ManageCards.openForm(inbox)
-}, {once: true})
-
-
+    openForm()
+})
 

@@ -27,9 +27,18 @@ const Inbox_v2 = () =>{
     }
 }
 
-let inbox = Inbox_v2()
+// let inbox = Inbox_v2()
+// inbox.addToDo("Call Joana!")
+// inbox.addToDo("Eat the yogurt")
+// inbox.removeTodo("Call Joana!")
+// print(inbox.getToDo())
 
-inbox.addToDo("Call Joana!")
-inbox.addToDo("Eat the yogurt")
-inbox.removeTodo("Call Joana!")
-print(inbox.getToDo())
+const Card = (title) =>{
+    return{
+        title
+    }
+}
+
+a = Card("Go run for 10 min!")
+
+print(a)

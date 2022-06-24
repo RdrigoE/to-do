@@ -1,4 +1,4 @@
-const loadHeader = () =>{
+const loadHeader = (array) =>{
     let main = document.querySelector(".main")
     let master_content = document.createDocumentFragment();
     master_content = document.createElement("div");
@@ -16,6 +16,7 @@ const loadHeader = () =>{
     content_title.appendChild(button)
     div.appendChild(content_title)
     master_content.appendChild(div)
+    updateCard(array)
 }
 
 const updateCard = (array) =>{
@@ -24,10 +25,11 @@ const updateCard = (array) =>{
         card.remove();
       });
     
-    let content = document.querySelector("#content")
-    array.todoArray.forEach(x =>{
-        let card = document.createDocumentFragment();
-        card = document.createElement("div");
+    let content = document.getElementById("content")
+    array.forEach(x =>{
+    
+        let big_card = document.createDocumentFragment();
+        let card = document.createElement("div");
         card.className = "card"
         let join = document.createElement("div");
         join.className = "join"
@@ -35,15 +37,23 @@ const updateCard = (array) =>{
         check.className = "check"
         let p = document.createElement("p")
         p.className = "todoTitle"
-        p.textContent = x.title
-
-        
+        p.innerHTML += x.title
+                
         join.appendChild(check)
         join.append(p)
         card.appendChild(join)
-        content.appendChild(card)
+        big_card.appendChild(card)
+        content.appendChild(big_card)
+    
+    })
+    let cards2 = document.querySelectorAll(".card")
+    cards2.forEach(card => {
+        card.querySelector(".check").addEventListener("click", () => {
+            card.remove();
+        })
     })
 }
+
 
 
 
