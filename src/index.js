@@ -31,12 +31,12 @@ const Inbox = () =>{
     }
 }
 
-const Card = (title) =>{
-    var title = title
-    var index = undefined
+const Card = (title,description,dueDate,priority) =>{
     return{
         title,
-        index,
+        description,
+        dueDate,
+        priority
     }
 }
 

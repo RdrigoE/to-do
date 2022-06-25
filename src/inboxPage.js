@@ -12,7 +12,7 @@ const loadHeader = (array) =>{
     div.appendChild(content_title);
     let button = document.createElement("button");
     button.id = "addCard";
-    button.textContent = "addCard"
+    button.textContent = "New Task"
     content_title.appendChild(button)
     div.appendChild(content_title)
     master_content.appendChild(div)

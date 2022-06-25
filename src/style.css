@@ -129,7 +129,6 @@ body{
     color: white;
 }
 
-
 #content{
     background-color: rgb(0, 0, 0);
     display: grid;
@@ -138,6 +137,22 @@ body{
     grid-gap: 10px;
     justify-content: center;
     
+}
+
+div.content-title>button#addCard{
+    height:85%;
+    width: 8vw;
+    margin-left: 2vw;
+    border: none;
+    background-color: #8ebf42;
+    color: #fff;
+    cursor: pointer;
+    /* width: 5vw; */
+    min-width: fit-content;
+    /* margin-bottom: 15px; */
+    opacity: 0.8;    
+    border-radius: 15px;
+    font-size: 75%;
 }
 
 .card{
@@ -202,7 +217,7 @@ body{
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 1vh;
     width: calc(max(300px,25vw));
     height: 20vh;
@@ -211,22 +226,10 @@ body{
     padding: 20px;
     background-color: #fff;
 }
-.formContainer input[type=title],
-.formContainer input[type=author] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 20px 0;
-    border: none;
-    background: #eee;
-}
-.formContainer input[type=title]:focus,
-.formContainer input[type=author]:focus {
-    background-color: #ddd;
-    outline: none;
-}
 
-.formContainer > #accepted{
-    width: 20px;
+.formContainer > input{
+    height: 4vh;
+    font-size: 4vh;
 }
 
 .buttonsForm{
@@ -235,16 +238,22 @@ body{
     min-width: auto;
 }
 
+.formContainer h2{
+    font-size: 3vh;
+}
+
 .formContainer .btn {
-    padding: 12px 20px;
+    padding: 1vh 1vw;
     border: none;
     background-color: #8ebf42;
     color: #fff;
     cursor: pointer;
-    width: 5vw;
+    width: 4vw;
     min-width: fit-content;
-    margin-bottom: 15px;
+    margin-bottom: 1vh;
     opacity: 0.8;
+    font-size: 3vh;
+    border-radius: 5px;
 }
 .formContainer .cancel {
     background-color: #cc0000;
