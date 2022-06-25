@@ -26,11 +26,13 @@ const updateCard = (array) =>{
       });
     
     let content = document.getElementById("content")
+    let count = 0
     array.forEach(x =>{
     
         let big_card = document.createDocumentFragment();
         let card = document.createElement("div");
-        card.className = "card"
+        card.className = "card " + String(count)
+        count++;
         let join = document.createElement("div");
         join.className = "join"
         let check = document.createElement("button");
@@ -46,15 +48,28 @@ const updateCard = (array) =>{
         content.appendChild(big_card)
     
     })
+}
+
+let deleteChecks = (inbox) => {
     let cards2 = document.querySelectorAll(".card")
     cards2.forEach(card => {
         card.querySelector(".check").addEventListener("click", () => {
+            inbox.removeIndex((card.className.slice(4,)));
             card.remove();
+            updateNumbers()
         })
     })
+    
+}
+
+let updateNumbers = () => {
+    let cards2 = document.querySelectorAll(".card")
+    let count = 0
+    cards2.forEach(card => {
+        card.className = card.className.slice(0,5) + count
+        count++
+        })
 }
 
 
-
-
-export {loadHeader, updateCard};
+export {loadHeader, updateCard,deleteChecks};

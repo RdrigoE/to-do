@@ -1,12 +1,12 @@
 import './style.css';
-import {loadHeader, updateCard} from "./inboxPage";
+import {loadHeader, updateCard, deleteChecks} from "./inboxPage";
 
 const Inbox = () =>{
     let list = []
 
-    const addToDo = (value) =>{
-        if (value != undefined | value != ""){
-            list.push(value)
+    const addToDo = (card) =>{
+        if (card != undefined & card.title != ""){
+            list.push(card)
         }
     }
 
@@ -17,21 +17,30 @@ const Inbox = () =>{
         }
     }
 
+    const removeIndex = (index) =>{
+        if (index > -1) {
+            list.splice(index, 1);
+        }
+    }
+
     return{
         list,
         addToDo,
         removeTodo,
+        removeIndex,
     }
 }
 
 const Card = (title) =>{
     var title = title
+    var index = undefined
     return{
-        title
+        title,
+        index,
     }
 }
 
-let openForm = () => {
+let openForm = (inbox) => {
     //Make the register visible
     document.getElementById("popupForm").style.display = "block";
     //Add Event listener for the buttons
@@ -46,17 +55,23 @@ let openForm = () => {
             let c = Card(input)
             inbox.addToDo(c)
             updateCard(inbox.list)
+            deleteChecks(inbox)
+            console.log(inbox.list)
+
             document.getElementById("title").value = ""   
             document.getElementById("popupForm").style.display = "none";
         }
     },{once: true})
 }
 
-let inbox = Inbox()
+var inbox = Inbox()
+
+inbox.addToDo(Card("Rodrigo de Jesus Eusebio"))
 
 loadHeader(inbox.list)
+deleteChecks(inbox)
 
 document.getElementById("addCard").addEventListener("click", () =>{
-    openForm()
+    openForm(inbox)
 })
 

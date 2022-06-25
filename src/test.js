@@ -2,37 +2,35 @@ print = function(value){
     console.log(value)
 }
 
-const Inbox_v2 = () =>{
-    let todoArray = []
-
-    const getToDo = () => todoArray;
+const Inbox = () =>{
+    let list = []
 
     const addToDo = (value) =>{
-        todoArray.push(value)
+        if (value != undefined & value.title != ""){
+            list.push(value)
+        }
     }
 
     const removeTodo = (value) =>{
-        var index = todoArray.indexOf(value);
-        
+        var index = list.indexOf(value);
         if (index > -1) {
-            todoArray.splice(index, 1);
+            list.splice(index, 1);
+        }
+    }
+
+    const removeIndex = (index) =>{
+        if (index > -1) {
+            list.splice(index, 1);
         }
     }
 
     return{
-        todoArray,
-        getToDo,
+        list,
         addToDo,
         removeTodo,
+        removeIndex,
     }
 }
-
-// let inbox = Inbox_v2()
-// inbox.addToDo("Call Joana!")
-// inbox.addToDo("Eat the yogurt")
-// inbox.removeTodo("Call Joana!")
-// print(inbox.getToDo())
-
 const Card = (title) =>{
     return{
         title
@@ -41,4 +39,25 @@ const Card = (title) =>{
 
 a = Card("Go run for 10 min!")
 
-print(a)
+
+let inbox = Inbox()
+inbox.addToDo(Card("Call Joana!"))
+inbox.addToDo(Card("Eat the yogurt"))
+print(inbox.list)
+//inbox.removeIndex(1)
+print(inbox.list)
+//inbox.removeIndex(0)
+level1(inbox)
+print(inbox.list)
+
+
+function level1(list){
+    level2(list)
+}
+
+function level2(list){
+    inbox.removeIndex(1)
+    inbox.removeIndex(0)
+}
+
+print(inbox.keys)

@@ -149,15 +149,15 @@ body{
 }
 
 .join{
-    display: flex;
+    /*display: flex;*/
     align-items: center;
-    justify-content: space-evenly;
-    width: 10rem;
-    
+    display: flex;
+    gap: 1vw;
 }
 .check{
     width: 3vh;
     height: 3vh;
+    margin-left: 2vh;
 }
 
 .content-title{
